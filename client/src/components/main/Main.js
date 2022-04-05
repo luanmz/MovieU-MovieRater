@@ -1,13 +1,24 @@
-import React from "react";
-import './style.css'
-import logo from '../../assets/logo-white.png'
+import React, { useEffect } from "react";
+import './style.css';
+import Nav from '../nav/Nav'
+import Api from "../../api/Api";
 
-export default function main () {
+
+export default function Main () {
+
+    useEffect(() => {
+        const loadAll = async () => {
+            // geting list
+            let list = await Api.getHomeList()
+            console.log(list)
+        }
+
+        loadAll()
+    }, []);
+
     return(
         <div className="main-container">
-            <div className="navbar">
-                <img src={logo}></img>
-            </div>
+            <Nav/>
         </div>
     )
 }
