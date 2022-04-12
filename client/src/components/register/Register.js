@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.css'
+import './Register.css'
 import {Formik, Form, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
 

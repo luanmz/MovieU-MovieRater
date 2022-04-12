@@ -1,5 +1,5 @@
 import React from "react";
-import './style.css'
+import './Nav.css'
 import logo from '../../assets/logo-white.png'
 
 export default function Nav () {
