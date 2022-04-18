@@ -1,7 +1,8 @@
 const axios =  require("axios")
 
+
 const api = axios.create({
-    baseURL: "https://pokeapi.co/api/v2/"
+    baseURL: "https://api.themoviedb.org/3",
 })
 
 module.exports = api
