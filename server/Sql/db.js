@@ -1,6 +1,6 @@
-const Sequelize = requere('sequelize');
+const Sequelize = require('sequelize');
 //Parametros: Nome do banco, usuario do banco, senha
-const sequelize = new Sequelize('MoviesDB', 'root', '12345', 
+const sequelize = new Sequelize('moviedb', 'root', '010528', 
 {
     dialect: 'mysql',
     host: 'localhost',
@@ -8,7 +8,7 @@ const sequelize = new Sequelize('MoviesDB', 'root', '12345',
 });
 
 //Verificação se a conexão com o banco foi realizada
-/*
+
 sequelize.authenticate().then(function()
 {
     console.log("Conectado com sucesso!");
@@ -16,7 +16,6 @@ sequelize.authenticate().then(function()
 {
     console.log("Falha ao se conectar: "+erro);
 })
-*/
 
 
 module.exports = sequelize;

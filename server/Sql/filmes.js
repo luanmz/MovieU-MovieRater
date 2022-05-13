@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 const database = require('./db');
 
+
+
 const Filmes = database.define('Filmes', 
 {
     id:
@@ -10,14 +12,40 @@ const Filmes = database.define('Filmes',
         allowNull: false,
         primaryKey: true
     },
-    titulo:
+
+    original_title:
     {
-        type: Sequelize.STRING(30),
+        type: Sequelize.STRING(50),
         allowNull: false,
     },
-    Genero:
+
+    poster_path:
     {
-        type: Sequelize.STRING(30),
+        type: Sequelize.STRING(100),
+        allowNull: false,
+    },
+
+    sinopse:
+    {
+        type: Sequelize.TEXT,
+        allowNull: false,
+    },
+
+    reseale_date:
+    {
+        type: Sequelize.DataTypes.DATE,
+        allowNull: false,
+    },
+
+    vote_count:
+    {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
+
+    vote_average:
+    {
+        type: Sequelize.INTEGER,
         allowNull: false,
     },
 });
