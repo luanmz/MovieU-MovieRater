@@ -1,22 +1,12 @@
 const express = require("express");
 const api = require("./api")
 const app = express();
-const database = require('./Sql/db')
-const filmes = require('./Sql/filmes')
-const usuario = require('./Sql/usuario')
+const database = require('./db')
+const filmes = require('./src/Models/Filmes')
 
-const sync = new Promise((resolve, reject)=>{
-    if (database.sync()){
-        resolve("BD sincronizado")
-    }
-    else{
-        reject("Erro")
-    }
-}).then((message) => {
-    console.log("this is the then: " + message)
-}).catch((error) => {
-    console.log("this is the catch: " + error)
-})
+
+database.sync().then(res=> console.log("Banco conectado")).catch(e=> console.log("Erro ao conectar: "+e))
+
 
 //---------------------------------------------------------
 
@@ -31,7 +21,7 @@ app.get("/", (_req, res) => {
 app.get("/trending", async (_req, res) => {
     const {data} = await api.get(`/trending/all/week?language=pt-BR&api_key=${API_KEY}`)
     console.log(data)
-    return res.send()
+    return res.send(data.results[0].title)
 })
 
 app.listen(3001, () => {

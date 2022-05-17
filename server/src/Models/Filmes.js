@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const database = require('./db');
+const database = require('../../db');
 
 
 
@@ -31,7 +31,7 @@ const Filmes = database.define('Filmes',
         allowNull: false,
     },
 
-    reseale_date:
+    release_date:
     {
         type: Sequelize.DataTypes.DATE,
         allowNull: false,
