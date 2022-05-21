@@ -8,7 +8,6 @@ const Filmes = database.define('Filmes',
     id:
     {
         type: Sequelize.INTEGER,
-        autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
@@ -45,7 +44,7 @@ const Filmes = database.define('Filmes',
 
     vote_average:
     {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DOUBLE,
         allowNull: false,
     },
 });

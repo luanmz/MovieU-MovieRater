@@ -10,18 +10,17 @@ const database = require("../../db.js");
 
 async function getData (_req, _res) {
     const {data} = await api.get(`/trending/all/week?language=pt-BR&api_key=${API_KEY}`)
-    console.log(data.results)
     return data.results
 }
 
 
 const populate = async () => {
     const listaFilmes = await getData()
-
     
     await listaFilmes.forEach(async filme => {
         await Filmes.create({
             original_title: filme.original_title ?? filme.original_name,
+            id: filme.id,
             poster_path: filme.poster_path,
             sinopse: filme.overview,
             release_date: filme.release_date ?? filme.first_air_date,
