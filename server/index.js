@@ -1,27 +1,19 @@
 const express = require("express");
 const api = require("./api")
 const app = express();
-const database = require('./db')
-const filmes = require('./src/Models/Filmes')
+const Filmes = require('./src/Models/Filmes.js');
+const database = require("./db.js");
+const cors = require('cors')
 
-
-database.sync().then(res=> console.log("Banco conectado")).catch(e=> console.log("Erro ao conectar: "+e))
-
-
-//---------------------------------------------------------
-
-const API_KEY = "7745c2cd007513d18df83f01e36a3027"
 
 app.use(express.json())
+app.use(cors())
 
-app.get("/", (_req, res) => {
-    return res.send("Rodando")
-})
+app.get("/", async (_req, res) => {
+    await database.sync().then(_res=> console.log("Banco conectado")).catch(e=> console.log("Erro ao conectar: "+e))
 
-app.get("/trending", async (_req, res) => {
-    const {data} = await api.get(`/trending/all/week?language=pt-BR&api_key=${API_KEY}`)
-    console.log(data)
-    return res.send(data.results[0].title)
+    const recebe = await Filmes.findAll();
+    return res.status(200).json(recebe)
 })
 
 app.listen(3001, () => {

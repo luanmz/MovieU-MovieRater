@@ -10,6 +10,7 @@ const database = require("../../db.js");
 
 async function getData (_req, _res) {
     const {data} = await api.get(`/trending/all/week?language=pt-BR&api_key=${API_KEY}`)
+    console.log(data.results)
     return data.results
 }
 
