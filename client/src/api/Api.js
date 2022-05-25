@@ -1,5 +1,4 @@
-const API_KEY = '7745c2cd007513d18df83f01e36a3027';
-const API_BASE = 'https://api.themoviedb.org/3';
+const axios = require('axios')
 
 /*
   - trending
@@ -10,11 +9,10 @@ const API_BASE = 'https://api.themoviedb.org/3';
 
 */
 
-const basicFetch = async (endpoint) => {
-    const req = await fetch(`${API_BASE}${endpoint}`)
-    const json = await req.json()
-    return json
-}
+const api = axios.create({
+  baseURL: "http://localhost:3001"
+})
+
 
 export default {
     getHomeList: async () => {
@@ -22,7 +20,7 @@ export default {
         {
             slug: 'trending',
             title: 'Populares da semana',
-            items: await basicFetch(`/trending/all/week?language=pt-BR&api_key=${API_KEY}`)
+            items: await api.get(`/`)
         }
       ]
     }
