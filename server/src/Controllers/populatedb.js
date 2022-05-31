@@ -20,9 +20,10 @@ const populate = async () => {
     
     await listaFilmes.forEach(async filme => {
         await Filmes.create({
-            original_title: filme.original_title ?? filme.original_name,
+            original_title: filme.title ?? filme.name,
             id: filme.id,
             poster_path: filme.poster_path,
+            backdrop_path: filme.backdrop_path,
             sinopse: filme.overview,
             release_date: filme.release_date ?? filme.first_air_date,
             vote_count: filme.vote_count,

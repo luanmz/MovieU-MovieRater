@@ -24,6 +24,12 @@ const Filmes = database.define('Filmes',
         allowNull: false,
     },
 
+    backdrop_path:
+    {
+        type: Sequelize.STRING(100),
+        allowNull: false,
+    },
+
     sinopse:
     {
         type: Sequelize.TEXT,
