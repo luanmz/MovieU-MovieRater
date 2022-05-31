@@ -1,27 +1,30 @@
 const axios = require('axios')
 
-/*
-  - trending
-  - movies
-  - tv shows
-  - top rated
-  - search mechanism
-
-*/
-
-const api = axios.create({
+export const api = axios.create({
   baseURL: "http://localhost:3001"
 })
-
 
 export default {
     getHomeList: async () => {
       return [
         {
             slug: 'trending',
-            title: 'Populares da semana',
+            title: 'Filmes e Séries',
             items: await api.get(`/`)
         }
       ]
-    }
+    },
+
+    getMovieById: (id) => {
+      return api.get(`/${id}`)
+    },
+    
+    setRate: (id, nota) => {
+        
+      return api.post(`/movieavaliacao/${id}`, {
+          avaliacao: nota
+      })
+
+      
+  }
 }

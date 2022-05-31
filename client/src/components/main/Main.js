@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import './Main.css';
-import Nav from '../nav/Nav'
 import Api from "../../api/Api";
 import MovieRow from '../movieRow/MovieRow'
+import Nav from "../nav/Nav";
 
 
 export default function Main () {
@@ -20,8 +20,9 @@ export default function Main () {
     }, []);
 
     return(
+        
         <div className="main-container">
-            <Nav/>
+            <Nav></Nav>
             <section className="lists">
                 {movieList.map((item,key) => (
                     <MovieRow key={key} title={item.title} items={item.items}/>
